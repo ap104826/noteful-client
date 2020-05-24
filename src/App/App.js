@@ -11,6 +11,7 @@ import ApiContext from '../ApiContext'
 import config from '../config'
 import './App.css'
 
+
 class App extends Component {
   state = {
     notes: [],
