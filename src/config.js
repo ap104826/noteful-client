@@ -1,3 +1,3 @@
 export default {
-  API_ENDPOINT: 'http://localhost:9090'
+  API_ENDPOINT: process.env.NODE_ENV === 'production' ? 'https://https://desolate-dawn-57125.herokuapp.com' : 'http://localhost:9090'
 }
