@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotePageNav component renders a .NotePageNav by default 1`] = `
+exports[`LinkPageNav component renders a .LinkPageNav by default 1`] = `
 <div
-  className="NotePageNav"
+  className="LinkPageNav"
 >
   <NavCircleButton
-    className="NotePageNav__back-button"
+    className="LinkPageNav__back-button"
     onClick={[Function]}
     role="link"
     tag="button"
@@ -34,9 +34,9 @@ exports[`NotePageNav component renders a .NotePageNav by default 1`] = `
 </div>
 `;
 
-exports[`NotePageNav component renders a h3 with folder name when in props 1`] = `
+exports[`LinkPageNav component renders a h3 with category name when in props 1`] = `
 <h3
-  className="NotePageNav__folder-name"
+  className="LinkPageNav__category-name"
 >
   Important
 </h3>

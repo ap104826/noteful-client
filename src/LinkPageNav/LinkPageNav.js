@@ -2,10 +2,10 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
-import { findNote, findFolder } from '../notes-helpers'
-import './NotePageNav.css'
+import { findLink, findCategory } from '../links-helpers'
+import './LinkPageNav.css'
 
-export default class NotePageNav extends React.Component {
+export default class LinkPageNav extends React.Component {
   static defaultProps = {
     history: {
       goBack: () => { }
@@ -17,25 +17,25 @@ export default class NotePageNav extends React.Component {
   static contextType = ApiContext;
 
   render() {
-    const { notes, folders, } = this.context
-    const { noteId } = this.props.match.params
-    const note = findNote(notes, noteId) || {}
-    const folder = findFolder(folders, note.folder_id)
+    const { links, categories, } = this.context
+    const { linkId } = this.props.match.params
+    const link = findLink(links, linkId) || {}
+    const categories = findCategory(categories, link.category_id)
     return (
-      <div className='NotePageNav'>
+      <div className='LinkPageNav'>
         <CircleButton
           tag='button'
           role='link'
           onClick={() => this.props.history.goBack()}
-          className='NotePageNav__back-button'
+          className='LinkPageNav__back-button'
         >
           <FontAwesomeIcon icon='chevron-left' />
           <br />
           Back
         </CircleButton>
-        {folder && (
-          <h3 className='NotePageNav__folder-name'>
-            {folder.name}
+        {category && (
+          <h3 className='LinkPageNav__category-name'>
+            {category.name}
           </h3>
         )}
       </div>

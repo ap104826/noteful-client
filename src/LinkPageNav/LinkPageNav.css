@@ -1,12 +1,12 @@
 
-.NotePageNav__back-button {
+.LinkPageNav__back-button {
   margin: 45px 20px 25px auto
 }
-.NotePageNav__back-button:hover {
+.LinkPageNav__back-button:hover {
   background-color: #FFB72F;
 }
 
-.NotePageNav__folder-name {
+.LinkPageNav__category-name {
   color: #b5b3b3;
   font-family: var(--custom-font);
   font-size: 40px;
