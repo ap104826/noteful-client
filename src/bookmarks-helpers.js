@@ -11,8 +11,8 @@ export const getBookmarksForCategory = (bookmarks = [], category_id) => (
     : bookmarks.filter(bookmark => bookmark.category_id === category_id)
 )
 
-export const countbookmarksForCategory = (bookmarks = [], category_id) => {
+export const countBookmarksForCategory = (bookmarks = [], category_id) => {
   console.log({ bookmarks })
   console.log({ category_id })
-  return bookmarks.filter(bookmark => bookmark.category_id == category_id).length
+  return bookmarks.filter(bookmark => bookmark.category_id === category_id).length
 }

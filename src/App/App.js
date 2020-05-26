@@ -19,27 +19,39 @@ class App extends Component {
   };
 
   componentDidMount() {
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/bookmarks`),
-      fetch(`${config.API_ENDPOINT}/categories`)
-    ])
-      .then(([bookmarksRes, categoriesRes]) => {
-        if (!bookmarksRes.ok)
-          return bookmarksRes.json().then(e => Promise.reject(e))
-        if (!categoriesRes.ok)
-          return categoriesRes.json().then(e => Promise.reject(e))
+    // Promise.all([
+    //   fetch(`${config.API_ENDPOINT}/bookmarks`),
+    //   fetch(`${config.API_ENDPOINT}/categories`)
+    // ])
+    //   .then(([bookmarksRes, categoriesRes]) => {
+    //     if (!bookmarksRes.ok)
+    //       return bookmarksRes.json().then(e => Promise.reject(e))
+    //     if (!categoriesRes.ok)
+    //       return categoriesRes.json().then(e => Promise.reject(e))
 
-        return Promise.all([
-          bookmarksRes.json(),
-          categoriesRes.json(),
-        ])
-      })
-      .then(([bookmarks, categories]) => {
-        this.setState({ bookmarks, categories })
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+    //     return Promise.all([
+    //       bookmarksRes.json(),
+    //       categoriesRes.json(),
+    //     ])
+    //   })
+    //   .then(([bookmarks, categories]) => {
+    //     this.setState({ bookmarks, categories })
+    //   })
+    //   .catch(error => {
+    //     console.error({ error })
+    //   })
+    this.setState({
+      bookmarks: [{
+
+
+      }],
+      categories: [{
+       Name: "Cooking"
+    },
+       {
+       Name:  "Travel"
+      }]
+    })
   }
 
   handleAddCategory = category => {
