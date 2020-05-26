@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import ClipitForm from '../ClipitForm/ClipitForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import './AddLink.css'
+import './AddBookmark.css'
 
-export default class AddLink extends Component {
+export default class AddBookmark extends Component {
   static defaultProps = {
     history: {
       push: () => { }
@@ -14,27 +14,27 @@ export default class AddLink extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const newLink = {
-      name: e.target['link-name'].value,
-      content: e.target['link-content'].value,
-      category_id: e.target['link-category-id'].value,
+    const newBookmark = {
+      name: e.target['bookmark-name'].value,
+      content: e.target['bookmark-content'].value,
+      category_id: e.target['bookmark-category-id'].value,
       modified: new Date(),
     }
-    fetch(`${config.API_ENDPOINT}/links`, {
+    fetch(`${config.API_ENDPOINT}/categories`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(newLink),
+      body: JSON.stringify(newCategory),
     })
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
         return res.json()
       })
-      .then(link => {
-        this.context.addLink(link)
-        this.props.history.push(`/category/${link.category_id}`)
+      .then(bookmark => {
+        this.context.addBookmark(bookmark)
+        this.props.history.push(`/category/${bookmark.category_id}`)
       })
       .catch(error => {
         console.error({ error })
@@ -44,26 +44,26 @@ export default class AddLink extends Component {
   render() {
     const { categories = [] } = this.context
     return (
-      <section className='AddLinks'>
-        <h2>Create a link</h2>
+      <section className='AddBookmarks'>
+        <h2>Create a bookmark</h2>
         <ClipitForm onSubmit={this.handleSubmit}>
           <div className='field'>
-            <label htmlFor='link-name-input'>
+            <label htmlFor='bookmark-name-input'>
               Name
             </label>
-            <input type='text' id='link-name-input' name='link-name' />
+            <input type='text' id='bookmark-name-input' name='bookmark-name' />
           </div>
           <div className='field'>
-            <label htmlFor='link-content-input'>
+            <label htmlFor='bookmark-content-input'>
               Content
             </label>
-            <textarea id='link-content-input' name='link-content' />
+            <textarea id='bookmark-content-input' name='bookmark-content' />
           </div>
           <div className='field'>
-            <label htmlFor='link-category-select'>
+            <label htmlFor='bookmark-category-select'>
               Category
             </label>
-            <select id='link-category-select' name='link-category-id'>
+            <select id='bookmark-category-select' name='bookmark-category-id'>
               <option value={null}>...</option>
               {categories.map(category =>
                 <option key={category.id} value={category.id}>
@@ -74,7 +74,7 @@ export default class AddLink extends Component {
           </div>
           <div className='buttons'>
             <button type='submit'>
-              Add link
+              Add bookmark
             </button>
           </div>
         </ClipitForm>

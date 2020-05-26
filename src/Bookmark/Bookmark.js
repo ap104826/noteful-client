@@ -4,19 +4,19 @@ import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import './Link.css'
+import './Bookmark.css'
 
-export default class Link extends React.Component {
+export default class Bookmark extends React.Component {
   static defaultProps ={
-    onDeleteLink: () => {},
+    onDeleteBookmark: () => {},
   }
   static contextType = ApiContext;
 
   handleClickDelete = e => {
     e.preventDefault()
-    const linkId = this.props.id
+    const bookmarkId = this.props.id
 
-    fetch(`${config.API_ENDPOINT}/links/${linkId}`, {
+    fetch(`${config.API_ENDPOINT}/bookmarks/${bookmarkId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -28,9 +28,9 @@ export default class Link extends React.Component {
         return res.json()
       })
       .then(() => {
-        this.context.deleteLink(linkId)
+        this.context.deleteBookmark(bookmarkId)
         // allow parent to perform extra behaviour
-        this.props.onDeleteLink(linkId)
+        this.props.onDeleteBookmark(bookmarkId)
       })
       .catch(error => {
         console.error({ error })
@@ -40,14 +40,14 @@ export default class Link extends React.Component {
   render() {
     const { name, id, modified } = this.props
     return (
-      <div className='Link'>
-        <h2 className='Link__title'>
-          <Link to={`/link/${id}`}>
+      <div className='Bookmark'>
+        <h2 className='Bookmark__title'>
+          <Link to={`/bookmark/${id}`}>
             {name}
           </Link>
         </h2>
         <button
-          className='Link__delete'
+          className='Bookmark__delete'
           type='button'
           onClick={this.handleClickDelete}
         >
@@ -55,8 +55,8 @@ export default class Link extends React.Component {
           {' '}
           remove
         </button>
-        <div className='Link__dates'>
-          <div className='Link__dates-modified'>
+        <div className='Bookmark__dates'>
+          <div className='Bookmark__dates-modified'>
             Modified
             {' '}
             <span className='Date'>

@@ -7,7 +7,7 @@ exports[`AddItemForm component renders the complete form 1`] = `
   <h2>
     Create a category
   </h2>
-  <Clip itForm>
+  <ClipitForm>
     <div
       className="field"
     >
@@ -30,6 +30,6 @@ exports[`AddItemForm component renders the complete form 1`] = `
         Add category
       </button>
     </div>
-  </Clip it Form>
+  </Clipit Form>
 </section>
 `;
