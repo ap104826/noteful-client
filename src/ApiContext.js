@@ -1,9 +1,9 @@
 import React from 'react'
 
 export default React.createContext({
-  links: [],
+  bookmarks: [],
   categories: [],
   addCategory: () => {},
-  addLinks: () => {},
-  deleteLinks: () => {},
+  addBookmark: () => {},
+  deleteBookmark: () => {},
 })

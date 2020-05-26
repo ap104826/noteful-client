@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddLink component renders the complete form 1`] = `
+exports[`AddBookmark component renders the complete form 1`] = `
 <section
   className="AddBookmark"
 >
@@ -12,7 +12,7 @@ exports[`AddLink component renders the complete form 1`] = `
       className="field"
     >
       <label
-        htmlFor="link-name-input"
+        htmlFor="bookmark-name-input"
       >
         Name
       </label>

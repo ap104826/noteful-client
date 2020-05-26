@@ -1,24 +1,24 @@
 
-.LinkListNav__list {
+.BookmarkListNav__list {
   list-style-type: none;
   margin: 130px 0 0;
   padding: 0;
 }
 
-.LinkListNav__button-wrapper {
+.BookmarkListNav__button-wrapper {
   margin: 0 0 0 auto;
   max-width: 180px;
 }
 
-.LinkListNav__add-category-button {
+.BookmarkListNav__add-category-button {
   margin: 20px auto;
 }
-.LinkListNav__add-category-button:hover {
+.BookmarkListNav__add-category-button:hover {
   background-color: #29862e;
   color: white;
 }
 
-.LinkListNav__category-link {
+.BookmarkListNav__category-link {
   background-color: #030f1f;
   color: #b5b3b3;
   display: block;
@@ -29,15 +29,15 @@
   padding: 8px 16px;
   text-decoration: none;
 }
-.LinkListNav__category-link:hover {
+.BookmarkListNav__category-link:hover {
   color: #FFB72F;
   cursor: pointer;
 }
-.LinkListNav__category-link.active {
+.BookmarkListNav__category-link.active {
   background-color: #102541;
 }
 
-.LinkListNav__num-links {
+.BookmarkListNav__num-bookmarks {
   color: #adadad;
   display: block;
   float: right;

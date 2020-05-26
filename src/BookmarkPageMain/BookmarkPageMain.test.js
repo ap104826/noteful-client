@@ -1,25 +1,25 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import LinkPageMain from './LinkPageMain'
+import BookmarkPageMain from './BookmarkPageMain'
 
-describe(`LinkPageMain component`, () => {
-  it('renders a .LinkPageMain by default', () => {
-    const wrapper = shallow(<LinkPageMain />)
+describe(`BookmarkPageMain component`, () => {
+  it('renders a .BookmarkPageMain by default', () => {
+    const wrapper = shallow(<BookmarkPageMain />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
   // enzyme doesn't yet support React.createContext
-  it.skip('renders a Link with link prop', () => {
+  it.skip('renders a Bookmark with bookmark prop', () => {
     const props = {
       match: {
         params: {
-          linkId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
+          bookmarkId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
         }
       }
     }
     const context = {
-      links: [{
+      bookmarks: [{
         id: `cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1`,
         name: `Dogs`,
         modified: `2019-01-03T00:00:00.000Z`,
@@ -27,9 +27,9 @@ describe(`LinkPageMain component`, () => {
         content: "Corporis accusamus placeat.\n \rUnde."
       }]
     }
-    const link = shallow(<LinkPageMain {...props} />, context)
-      .find('Link')
-    expect(toJson(link)).toMatchSnapshot()
+    const bookmark = shallow(<BookmarkPageMain {...props} />, context)
+      .find('Bookmark')
+    expect(toJson(bookmark)).toMatchSnapshot()
   })
 
   // enzyme doesn't yet support React.createContext
@@ -37,14 +37,14 @@ describe(`LinkPageMain component`, () => {
     const props = {
       match: {
         params: {
-          linkId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
+          bookmarkId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
         }
       }
     }
 
-    const linksContextWithDifferentContent = [
+    const bookmarksContextWithDifferentContent = [
       {
-        links: [
+        bookmarks: [
           {
             id: `cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1`,
             content: "Content with n r.\n \rafter n r.",
@@ -52,7 +52,7 @@ describe(`LinkPageMain component`, () => {
         ]
       },
       {
-        links: [
+        bookmarks: [
           {
             id: `cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1`,
             content: "Content with n.\nafter."
@@ -61,9 +61,9 @@ describe(`LinkPageMain component`, () => {
       }
     ]
 
-    linksContextWithDifferentContent.forEach(context => {
-      const content = shallow(<LinkPageMain {...props} />, context)
-        .find('LinkPageMain__content')
+    BookmarksContextWithDifferentContent.forEach(context => {
+      const content = shallow(<BookmarkPageMain {...props} />, context)
+        .find('BookmarkPageMain__content')
       expect(toJson(content)).toMatchSnapshot()
     })
   })

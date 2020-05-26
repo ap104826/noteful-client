@@ -62,7 +62,7 @@ exports[`BookmarkListMain component renders a Bookmark in ul for each bookmarks 
   <li
     key="d26e01a6-ffaf-11e8-8eb2-f2801f1b9fd1"
   >
-    <Link
+    <Bookmark
       id="d26e01a6-ffaf-11e8-8eb2-f2801f1b9fd1"
       modified="2018-03-01T00:00:00.000Z"
       name="Pigs"
@@ -71,7 +71,7 @@ exports[`BookmarkListMain component renders a Bookmark in ul for each bookmarks 
   <li
     key="d26e0570-ffaf-11e8-8eb2-f2801f1b9fd1"
   >
-    <Link
+    <Bookmark
       id="d26e0570-ffaf-11e8-8eb2-f2801f1b9fd1"
       modified="2019-01-04T00:00:00.000Z"
       name="Birds"

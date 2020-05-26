@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LinkListNav component renders a .LinkListNav by default 1`] = `
+exports[`BookmarkListNav component renders a .BookmarkListNav by default 1`] = `
 <div
-  className="LinkListNav"
+  className="BookmarkListNav"
 >
   <ul
-    className="LinkListNav__list"
+    className="BookmarkListNav__list"
   />
   <div
-    className="LinkListNav__button-wrapper"
+    className="BookmarkListNav__button-wrapper"
   >
     <NavCircleButton
-      className="LinkListNav__add-category-button"
+      className="BookmarkListNav__add-category-button"
       tag={[Function]}
       to="/add-category"
       type="button"
@@ -41,9 +41,9 @@ exports[`LinkListNav component renders a .LinkListNav by default 1`] = `
 </div>
 `;
 
-exports[`LinkListNav component renders a link in ul for each category in array 1`] = `
+exports[`BookmarkListNav component renders a link in ul for each category in array 1`] = `
 <ul
-  className="LinkListNav__list"
+  className="BookmarkListNav__list"
 >
   <li
     key="b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
@@ -51,11 +51,11 @@ exports[`LinkListNav component renders a link in ul for each category in array 1
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="LinkListNav__Category-link"
+      className="BookmarkListNav__Category-link"
       to="/category/b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="LinkListNav__num-links"
+        className="BookmarkListNav__num-bookmarks"
       >
         2
       </span>
@@ -68,11 +68,11 @@ exports[`LinkListNav component renders a link in ul for each category in array 1
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="LinkListNav__category-link"
+      className="BookmarkListNav__category-link"
       to="/category/b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="LinkListNav__num-links"
+        className="BookmarkListNav__num-bookmarks"
       >
         2
       </span>
@@ -85,11 +85,11 @@ exports[`LinkListNav component renders a link in ul for each category in array 1
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="LinkListNav__category-link"
+      className="BookmarkListNav__category-link"
       to="/category/b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="LinkListNav__num-links"
+        className="BookmarkListNav__num-bookmarks"
       >
         0
       </span>
