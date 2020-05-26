@@ -1,22 +1,22 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import NotefulForm from './NotefulForm'
+import Clip itForm from './Clip itForm'
 
-describe(`NotefulForm component`, () => {
+describe(`Clip itForm component`, () => {
   const props = {
     className: 'test-class-name',
     children: <p>test children</p>,
     'data-other': 'test-other-prop'
   }
 
-  it('renders a form.NotefulForm by default', () => {
-    const wrapper = shallow(<NotefulForm />)
+  it('renders a form.ClipitForm by default', () => {
+    const wrapper = shallow(<Clip itForm />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  it('renders the NotefulForm given props', () => {
-    const wrapper = shallow(<NotefulForm {...props} />)
+  it('renders the ClipitForm given props', () => {
+    const wrapper = shallow(<ClipitForm {...props} />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 })

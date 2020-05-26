@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotefulForm component renders a form.NotefulForm by default 1`] = `
+exports[`ClipitForm component renders a form.ClipitForm by default 1`] = `
 <form
   action="#"
-  className="Noteful-form "
+  className="Clipit-form "
 />
 `;
 
-exports[`NotefulForm component renders the NotefulForm given props 1`] = `
+exports[`ClipitForm component renders the ClipitForm given props 1`] = `
 <form
   action="#"
-  className="Noteful-form test-class-name"
+  className="Clipit-form test-class-name"
   data-other="test-other-prop"
 >
   <p>

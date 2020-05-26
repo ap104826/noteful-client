@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoteListMain component renders a .NoteListMain by default 1`] = `
+exports[`LinkListMain component renders a .LinkListMain by default 1`] = `
 <section
-  className="NoteListMain"
+  className="LinkListMain"
 >
   <ul />
   <div
-    className="NoteListMain__button-container"
+    className="LinkListMain__button-container"
   >
     <NavCircleButton
-      className="NoteListMain__add-note-button"
+      className="LinkListMain__add-link-button"
       tag={[Function]}
-      to="/add-note"
+      to="/add-link"
       type="button"
     >
       <FontAwesomeIcon
@@ -33,18 +33,18 @@ exports[`NoteListMain component renders a .NoteListMain by default 1`] = `
         transform={null}
       />
       <br />
-      Note
+      Link
     </NavCircleButton>
   </div>
 </section>
 `;
 
-exports[`NoteListMain component renders a Note in ul for each notes in array 1`] = `
+exports[`LinkListMain component renders a Link in ul for each links in array 1`] = `
 <ul>
   <li
     key="cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1"
   >
-    <Note
+    <Link
       id="cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1"
       modified="2019-01-03T00:00:00.000Z"
       name="Dogs"
@@ -53,7 +53,7 @@ exports[`NoteListMain component renders a Note in ul for each notes in array 1`]
   <li
     key="d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1"
   >
-    <Note
+    <Link
       id="d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1"
       modified="2018-08-15T23:00:00.000Z"
       name="Cats"
@@ -62,7 +62,7 @@ exports[`NoteListMain component renders a Note in ul for each notes in array 1`]
   <li
     key="d26e01a6-ffaf-11e8-8eb2-f2801f1b9fd1"
   >
-    <Note
+    <Link
       id="d26e01a6-ffaf-11e8-8eb2-f2801f1b9fd1"
       modified="2018-03-01T00:00:00.000Z"
       name="Pigs"
@@ -71,7 +71,7 @@ exports[`NoteListMain component renders a Note in ul for each notes in array 1`]
   <li
     key="d26e0570-ffaf-11e8-8eb2-f2801f1b9fd1"
   >
-    <Note
+    <Link
       id="d26e0570-ffaf-11e8-8eb2-f2801f1b9fd1"
       modified="2019-01-04T00:00:00.000Z"
       name="Birds"

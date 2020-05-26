@@ -1,11 +1,11 @@
 import React from 'react'
-import './NotefulForm.css'
+import './Clipt itForm.css'
 
-export default function NotefulForm(props) {
+export default function Clip itForm(props) {
   const { className, ...otherProps } = props
   return (
     <form
-      className={['Noteful-form', className].join(' ')}
+      className={['Clip it-form', className].join(' ')}
       action='#'
       {...otherProps}
     />

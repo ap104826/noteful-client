@@ -1,30 +1,30 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import NotePageNav from './NotePageNav'
+import LinkPageNav from './LinkPageNav'
 
-describe(`NotePageNav component`, () => {
-  it('renders a .NotePageNav by default', () => {
-    const wrapper = shallow(<NotePageNav />)
+describe(`LinkPageNav component`, () => {
+  it('renders a .LinkPageNav by default', () => {
+    const wrapper = shallow(<LinkPageNav />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
   // enzyme doesn't support React.createContext
-  it.skip('renders a h3 with folder name when in props', () => {
+  it.skip('renders a h3 with category name when in props', () => {
     const props = {
       match: {
         params: {
-          noteId: 'test-note-id'
+          linkId: 'test-link-id'
         }
       }
     }
     const context = {
-      notes: [{ id: 'test-note-id', folder_id: 'test-folder-id' }],
-      folders: [{ id: 'test-folder-id', name: 'Important' }]
+      links: [{ id: 'test-link-id', category_id: 'test-category-id' }],
+      categories: [{ id: 'test-category-id', name: 'Important' }]
     }
 
-    const h3 = shallow(<NotePageNav {...props} />, context)
-      .find('.NotePageNav__folder-name')
+    const h3 = shallow(<LinkPageNav {...props} />, context)
+      .find('.LinkPageNav__category-name')
     expect(toJson(h3)).toMatchSnapshot()
   })
 })
