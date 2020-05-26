@@ -1,18 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import NoteListNav from './NoteListNav'
+import LinkListNav from './LinkListNav'
 
-describe(`NoteListNav component`, () => {
-  it('renders a .NoteListNav by default', () => {
-    const wrapper = shallow(<NoteListNav />)
+describe(`LinkListNav component`, () => {
+  it('renders a .LinkListNav by default', () => {
+    const wrapper = shallow(<LinkListNav />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
   // enzyme doesn't yet support React.createContext
-  it.skip('renders a link in ul for each folder in array', () => {
+  it.skip('renders a link in ul for each category in array', () => {
     const context = {
-      notes: [
+      links: [
         {
           "id": "cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1",
           "name": "Dogs",
@@ -42,7 +42,7 @@ describe(`NoteListNav component`, () => {
           "content": "Eum culpa odit."
         },
       ],
-      folders: [
+      categories: [
         {
           "id": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
           "name": "Important"
@@ -57,7 +57,7 @@ describe(`NoteListNav component`, () => {
         }
       ]
     }
-    const ul = shallow(<NoteListNav />, context)
+    const ul = shallow(<LinkListNav />, context)
       .find('ul')
     expect(toJson(ul)).toMatchSnapshot()
   })

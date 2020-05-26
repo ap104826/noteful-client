@@ -1,24 +1,24 @@
 
-.NoteListNav__list {
+.LinkListNav__list {
   list-style-type: none;
   margin: 130px 0 0;
   padding: 0;
 }
 
-.NoteListNav__button-wrapper {
+.LinkListNav__button-wrapper {
   margin: 0 0 0 auto;
   max-width: 180px;
 }
 
-.NoteListNav__add-folder-button {
+.LinkListNav__add-category-button {
   margin: 20px auto;
 }
-.NoteListNav__add-folder-button:hover {
+.LinkListNav__add-category-button:hover {
   background-color: #29862e;
   color: white;
 }
 
-.NoteListNav__folder-link {
+.LinkListNav__category-link {
   background-color: #030f1f;
   color: #b5b3b3;
   display: block;
@@ -29,15 +29,15 @@
   padding: 8px 16px;
   text-decoration: none;
 }
-.NoteListNav__folder-link:hover {
+.LinkListNav__category-link:hover {
   color: #FFB72F;
   cursor: pointer;
 }
-.NoteListNav__folder-link.active {
+.LinkListNav__category-link.active {
   background-color: #102541;
 }
 
-.NoteListNav__num-notes {
+.LinkListNav__num-links {
   color: #adadad;
   display: block;
   float: right;

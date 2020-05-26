@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import AddNote from './AddNote'
+import AddLink from './AddLink'
 
-describe(`AddNote component`, () => {
-  const stubFolders = [
+describe(`AddLink component`, () => {
+  const stubCategories = [
     {
       "id": "b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1",
       "name": "Important"
@@ -20,15 +20,15 @@ describe(`AddNote component`, () => {
   ]
 
   it('renders the complete form', () => {
-    const wrapper = shallow(<AddNote />)
+    const wrapper = shallow(<AddLink />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
   // enzyme doesn't support React.createContext
-  it.skip('renders the select options from folders', () => {
-    const context = { folders: stubFolders }
-    const select = shallow(<AddNote />, context)
-      .find('#note-folder-select')
+  it.skip('renders the select options from categories', () => {
+    const context = { categories: stubCategories }
+    const select = shallow(<AddLink />, context)
+      .find('#link-category-select')
     expect(toJson(select)).toMatchSnapshot()
   })
 })

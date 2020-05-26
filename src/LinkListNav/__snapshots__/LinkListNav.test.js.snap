@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoteListNav component renders a .NoteListNav by default 1`] = `
+exports[`LinkListNav component renders a .LinkListNav by default 1`] = `
 <div
-  className="NoteListNav"
+  className="LinkListNav"
 >
   <ul
-    className="NoteListNav__list"
+    className="LinkListNav__list"
   />
   <div
-    className="NoteListNav__button-wrapper"
+    className="LinkListNav__button-wrapper"
   >
     <NavCircleButton
-      className="NoteListNav__add-folder-button"
+      className="LinkListNav__add-category-button"
       tag={[Function]}
-      to="/add-folder"
+      to="/add-category"
       type="button"
     >
       <FontAwesomeIcon
@@ -35,15 +35,15 @@ exports[`NoteListNav component renders a .NoteListNav by default 1`] = `
         transform={null}
       />
       <br />
-      Folder
+      Category
     </NavCircleButton>
   </div>
 </div>
 `;
 
-exports[`NoteListNav component renders a link in ul for each folder in array 1`] = `
+exports[`LinkListNav component renders a link in ul for each category in array 1`] = `
 <ul
-  className="NoteListNav__list"
+  className="LinkListNav__list"
 >
   <li
     key="b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
@@ -51,11 +51,11 @@ exports[`NoteListNav component renders a link in ul for each folder in array 1`]
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="NoteListNav__folder-link"
-      to="/folder/b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
+      className="LinkListNav__Category-link"
+      to="/category/b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="NoteListNav__num-notes"
+        className="LinkListNav__num-links"
       >
         2
       </span>
@@ -68,11 +68,11 @@ exports[`NoteListNav component renders a link in ul for each folder in array 1`]
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="NoteListNav__folder-link"
-      to="/folder/b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1"
+      className="LinkListNav__category-link"
+      to="/category/b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="NoteListNav__num-notes"
+        className="LinkListNav__num-links"
       >
         2
       </span>
@@ -85,11 +85,11 @@ exports[`NoteListNav component renders a link in ul for each folder in array 1`]
     <NavLink
       activeClassName="active"
       aria-current="page"
-      className="NoteListNav__folder-link"
-      to="/folder/b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1"
+      className="LinkListNav__category-link"
+      to="/category/b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1"
     >
       <span
-        className="NoteListNav__num-notes"
+        className="LinkListNav__num-links"
       >
         0
       </span>

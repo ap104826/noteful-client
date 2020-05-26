@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import NotefulForm from '../NotefulForm/NotefulForm'
+import ClipitForm from '../ClipitForm/ClipitForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import './AddFolder.css'
+import './AddCategory.css'
 
-export default class AddFolder extends Component {
+export default class AddCategory extends Component {
   static defaultProps = {
     history: {
       push: () => { }
@@ -14,24 +14,24 @@ export default class AddFolder extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const folder = {
-      name: e.target['folder-name'].value
+    const category = {
+      name: e.target['category-name'].value
     }
-    fetch(`${config.API_ENDPOINT}/folders`, {
+    fetch(`${config.API_ENDPOINT}/categories`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(folder),
+      body: JSON.stringify(category),
     })
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
         return res.json()
       })
-      .then(folder => {
-        this.context.addFolder(folder)
-        this.props.history.push(`/folder/${folder.id}`)
+      .then(category => {
+        this.context.addCategory(category)
+        this.props.history.push(`/category/${category.id}`)
       })
       .catch(error => {
         console.error({ error })
@@ -40,21 +40,21 @@ export default class AddFolder extends Component {
 
   render() {
     return (
-      <section className='AddFolder'>
-        <h2>Create a folder</h2>
-        <NotefulForm onSubmit={this.handleSubmit}>
+      <section className='AddCategory'>
+        <h2>Create a Category</h2>
+        <ClipitForm onSubmit={this.handleSubmit}>
           <div className='field'>
-            <label htmlFor='folder-name-input'>
+            <label htmlFor='category-name-input'>
               Name
             </label>
-            <input type='text' id='folder-name-input' name='folder-name' />
+            <input type='text' id='category-name-input' name='category-name' />
           </div>
           <div className='buttons'>
             <button type='submit'>
-              Add folder
+              Add category
             </button>
           </div>
-        </NotefulForm>
+        </ClipitForm>
       </section>
     )
   }

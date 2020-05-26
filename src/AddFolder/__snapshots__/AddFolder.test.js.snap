@@ -2,22 +2,22 @@
 
 exports[`AddItemForm component renders the complete form 1`] = `
 <section
-  className="AddFolder"
+  className="AddCategory"
 >
   <h2>
-    Create a folder
+    Create a category
   </h2>
-  <NotefulForm>
+  <Clip itForm>
     <div
       className="field"
     >
       <label
-        htmlFor="folder-name-input"
+        htmlFor="category-name-input"
       >
         Name
       </label>
       <input
-        id="folder-name-input"
+        id="category-name-input"
         type="text"
       />
     </div>
@@ -27,9 +27,9 @@ exports[`AddItemForm component renders the complete form 1`] = `
       <button
         type="submit"
       >
-        Add folder
+        Add category
       </button>
     </div>
-  </NotefulForm>
+  </Clip it Form>
 </section>
 `;

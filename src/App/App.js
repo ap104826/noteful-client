@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import NoteListNav from '../NoteListNav/NoteListNav'
-import NotePageNav from '../NotePageNav/NotePageNav'
-import NoteListMain from '../NoteListMain/NoteListMain'
-import NotePageMain from '../NotePageMain/NotePageMain'
-import AddFolder from '../AddFolder/AddFolder'
-import AddNote from '../AddNote/AddNote'
+import LinkListNav from '../LinkListNav/LinkListNav'
+import LinkPageNav from '../LinkPageNav/LinkPageNav'
+import LinkListMain from '../LinkListMain/LinkListMain'
+import LinkPageMain from '../LinkPageMain/LinkPageMain'
+import AddCategory from '../AddCategory/AddCategory'
+import AddLink from '../AddLink/AddLink'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './App.css'
@@ -14,80 +14,80 @@ import './App.css'
 
 class App extends Component {
   state = {
-    notes: [],
-    folders: [],
+    links: [],
+    categories: [],
   };
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/notes`),
-      fetch(`${config.API_ENDPOINT}/folders`)
+      fetch(`${config.API_ENDPOINT}/links`),
+      fetch(`${config.API_ENDPOINT}/categories`)
     ])
-      .then(([notesRes, foldersRes]) => {
-        if (!notesRes.ok)
-          return notesRes.json().then(e => Promise.reject(e))
-        if (!foldersRes.ok)
-          return foldersRes.json().then(e => Promise.reject(e))
+      .then(([linksRes, categoriesRes]) => {
+        if (!linksRes.ok)
+          return linksRes.json().then(e => Promise.reject(e))
+        if (!categoriesRes.ok)
+          return categoriesRes.json().then(e => Promise.reject(e))
 
         return Promise.all([
-          notesRes.json(),
-          foldersRes.json(),
+          linksRes.json(),
+          categoriesRes.json(),
         ])
       })
-      .then(([notes, folders]) => {
-        this.setState({ notes, folders })
+      .then(([links, categories]) => {
+        this.setState({ links, categories })
       })
       .catch(error => {
         console.error({ error })
       })
   }
 
-  handleAddFolder = folder => {
+  handleAddCategory = category => {
     this.setState({
-      folders: [
-        ...this.state.folders,
-        folder
+      categories: [
+        ...this.state.categories,
+        category
       ]
     })
   }
 
-  handleAddNote = note => {
+  handleAddLink = link => {
     this.setState({
-      notes: [
-        ...this.state.notes,
-        note
+      links: [
+        ...this.state.links,
+        link
       ]
     })
   }
 
-  handleDeleteNote = noteId => {
+  handleDeletelink = linkId => {
     this.setState({
-      notes: this.state.notes.filter(note => note.id !== noteId)
+      links: this.state.links.filter(link => link.id !== linkId)
     })
   }
 
   renderNavRoutes() {
     return (
       <>
-        {['/', '/folder/:folder_id'].map(path =>
+        {['/', '/category/:category_id'].map(path =>
           <Route
             exact
             key={path}
             path={path}
-            component={NoteListNav}
+            component={LinkListNav}
           />
         )}
         <Route
-          path='/note/:noteId'
-          component={NotePageNav}
+          path='/link/:linkId'
+          component={LinkPageNav}
         />
         <Route
-          path='/add-folder'
-          component={NotePageNav}
+          path='/add-category'
+          component={LinkPageNav}
         />
         <Route
-          path='/add-note'
-          component={NotePageNav}
+          path='/add-link'
+          component={LinkPageNav}
         />
       </>
     )
@@ -96,25 +96,25 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        {['/', '/folder/:folder_id'].map(path =>
+        {['/', '/category/:category_id'].map(path =>
           <Route
             exact
             key={path}
             path={path}
-            component={NoteListMain}
+            component={LinkListMain}
           />
         )}
         <Route
-          path='/note/:noteId'
-          component={NotePageMain}
+          path='/link/:linkId'
+          component={LinkPageMain}
         />
         <Route
-          path='/add-folder'
-          component={AddFolder}
+          path='/add-category'
+          component={AddCategory}
         />
         <Route
-          path='/add-note'
-          component={AddNote}
+          path='/add-link'
+          component={AddLink}
         />
       </>
     )
@@ -122,11 +122,11 @@ class App extends Component {
 
   render() {
     const value = {
-      notes: this.state.notes,
-      folders: this.state.folders,
-      addFolder: this.handleAddFolder,
-      addNote: this.handleAddNote,
-      deleteNote: this.handleDeleteNote,
+      Links: this.state.links,
+      categories: this.state.categories,
+      addCategory: this.handleAddCategory,
+      addLink: this.handleAddLink,
+      deleteLink: this.handleDeleteLink,
     }
     return (
       <ApiContext.Provider value={value}>
@@ -136,7 +136,7 @@ class App extends Component {
           </nav>
           <header className='App__header'>
             <h1>
-              <Link to='/'>Noteful</Link>
+              <Link to='/'>Clip It</Link>
               {' '}
               <FontAwesomeIcon icon='check-double' />
             </h1>
