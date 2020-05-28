@@ -1,36 +1,36 @@
-.Clipit-form {
+.Clip it-form {
   background-color: #1d3656;
   color: #dedede;
   padding: 16px;
   max-width: 332px;
 }
 
-.CLipit-form label {
+.CLip it-form label {
   display: block;
   font-size: 16px;
   padding-bottom: 8px;
 }
 
-.Clipit-form input,
-.Clipit-form textarea,
-.Clipit-form select {
+.Clip it-form input,
+.Clip it-form textarea,
+.Clip it-form select {
   font-size: 14px;
   padding: 8px;
   width: 300px;
 }
 
-.Clipit-form select {
+.Clip it-form select {
   height: 33px;
 }
 
-.Clipit-form > .field {
+.Clip it-form > .field {
   margin-bottom: 16px;
 }
-.Clipit-form > .buttons {
+.Clip it-form > .buttons {
   margin-top: 26px;
 }
 
-.Clipit-form button {
+.Clip it-form button {
   background-color: #010d1e;
   border-radius: 4px;
   border: 0;
@@ -42,7 +42,7 @@
   text-align: center;
   text-decoration: none;
 }
-.Clipit-form button[type="submit"]:hover {
+.Clip it-form button[type="submit"]:hover {
   background-color: #29862e;
   color: white;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import ClipitForm from './ClipitForm'
+import Clip itForm from './Clip itForm'
 
-describe(`ClipitForm component`, () => {
+describe(`Clip itForm component`, () => {
   const props = {
     className: 'test-class-name',
     children: <p>test children</p>,
@@ -11,7 +11,7 @@ describe(`ClipitForm component`, () => {
   }
 
   it('renders a form.ClipitForm by default', () => {
-    const wrapper = shallow(<ClipitForm />)
+    const wrapper = shallow(<Clip itForm />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import Bookmark from './Bookmark'
+import Link from './Link'
 
 describe(`Bookmark component`, () => {
   const props = {

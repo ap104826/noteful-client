@@ -1,12 +1,12 @@
 
-.BookmarkPageNav__back-button {
+.LinkPageNav__back-button {
   margin: 45px 20px 25px auto
 }
-.BookmarkPageNav__back-button:hover {
+.LinkPageNav__back-button:hover {
   background-color: #FFB72F;
 }
 
-.BookmarkPageNav__category-name {
+.LinkPageNav__category-name {
   color: #b5b3b3;
   font-family: var(--custom-font);
   font-size: 40px;

@@ -1,11 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import BookmarkPageNav from './BookmarkPageNav'
+import LinkPageNav from './LinkPageNav'
 
-describe(`BookmarkPageNav component`, () => {
-  it('renders a .BookmarkPageNav by default', () => {
-    const wrapper = shallow(<BookmarkPageNav />)
+describe(`LinkPageNav component`, () => {
+  it('renders a .LinkPageNav by default', () => {
+    const wrapper = shallow(<LinkPageNav />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
@@ -14,17 +14,17 @@ describe(`BookmarkPageNav component`, () => {
     const props = {
       match: {
         params: {
-          bookmarkId: 'test-bookmark-id'
+          linkId: 'test-link-id'
         }
       }
     }
     const context = {
-      bookmarks: [{ id: 'test-bookmark-id', category_id: 'test-category-id' }],
+      links: [{ id: 'test-link-id', category_id: 'test-category-id' }],
       categories: [{ id: 'test-category-id', name: 'Important' }]
     }
 
-    const h3 = shallow(<BookmarkPageNav {...props} />, context)
-      .find('.BookmarkPageNav__category-name')
+    const h3 = shallow(<LinkPageNav {...props} />, context)
+      .find('.LinkPageNav__category-name')
     expect(toJson(h3)).toMatchSnapshot()
   })
 })
