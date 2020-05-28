@@ -6,7 +6,6 @@
     "configurations": [
         {
             "type": "chrome",
-            "port": 9229,
             "request": "attach",
             "name": "Launch Program",
             "url": "http://localhost:3000/*",

@@ -14,51 +14,43 @@ import './App.css'
 
 class App extends Component {
   state = {
-    bookmarks: [],
+    Bookmarks: [],
     categories: [],
   };
 
   componentDidMount() {
+    // Promise.all([
+    //   fetch(`${config.API_ENDPOINT}/bookmarks`),
+    //   fetch(`${config.API_ENDPOINT}/categories`)
+    // ])
+    //   .then(([bookmarksRes, categoriesRes]) => {
+    //     if (!bookmarksRes.ok)
+    //       return bookmarksRes.json().then(e => Promise.reject(e))
+    //     if (!categoriesRes.ok)
+    //       return categoriesRes.json().then(e => Promise.reject(e))
+
+    //     return Promise.all([
+    //       bookmarksRes.json(),
+    //       categoriesRes.json(),
+    //     ])
+    //   })
+    //   .then(([bookmarks, categories]) => {
+    //     this.setState({ bookmarks, categories })
+    //   })
+    //   .catch(error => {
+    //     console.error({ error })
+    //   })
     this.setState({
-      bookmarks: [
-        {
-          "id": 5,
-          "title": "yahoo bookmark",
-          "category_id": null,
-          "thumbnail_url": null,
-          "description": null,
-          "is_favorite": null,
-          "link": "www.yahoo.com",
-          "modified": "2020-05-28T18:18:49.984Z"
-        },
-        {
-          "id": 3,
-          "title": "facebook",
-          "category_id": null,
-          "thumbnail_url": null,
-          "description": null,
-          "is_favorite": true,
-          "link": "www.yahoo.com",
-          "modified": "2020-05-28T17:38:32.868Z"
-        },
-        {
-          "id": 4,
-          "title": "facebook",
-          "category_id": null,
-          "thumbnail_url": null,
-          "description": null,
-          "is_favorite": null,
-          "link": "www.google.com",
-          "modified": "2020-05-28T17:48:21.874Z"
-        }
-      ],
-      categories: [
-        {
-          "id": 3,
-          "name": "travel",
-          "modified": "2020-05-28T18:17:29.257Z"
-        }
-      ]
+      bookmarks: [{
+
+
+      }],
+      categories: [{
+       Name: "Cooking"
+    },
+       {
+       Name:  "Travel"
+      }]
     })
   }
 
@@ -142,13 +134,12 @@ class App extends Component {
 
   render() {
     const value = {
-      bookmarks: this.state.bookmarks,
+      Bookmarks: this.state.bookmarks,
       categories: this.state.categories,
       addCategory: this.handleAddCategory,
       addBookmark: this.handleAddBookmark,
       deleteBookmark: this.handleDeleteBookmark,
     }
-    console.log({value})
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>
