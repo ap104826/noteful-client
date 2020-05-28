@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import BookmarkListNav from '../BookmarkListNav/BookmarkListNav'
-import BookmarkPageNav from '../BookmarkPageNav/BookmarkPageNav'
-import BookmarkListMain from '../BookmarkListMain/BookmarkListMain'
-import BookmarkPageMain from '../BookmarkPageMain/BookmarkPageMain'
+import LinkListNav from '../LinkListNav/LinkListNav'
+import LinkPageNav from '../LinkPageNav/LinkPageNav'
+import LinkListMain from '../LinkListMain/LinkListMain'
+import LinkPageMain from '../LinkPageMain/LinkPageMain'
 import AddCategory from '../AddCategory/AddCategory'
-import AddBookmark from '../AddBookmark/AddBookmark'
+import AddLink from '../AddLink/AddLink'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './App.css'
@@ -14,28 +14,28 @@ import './App.css'
 
 class App extends Component {
   state = {
-    Bookmarks: [],
+    links: [],
     categories: [],
   };
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/bookmarks`),
+      fetch(`${config.API_ENDPOINT}/links`),
       fetch(`${config.API_ENDPOINT}/categories`)
     ])
-      .then(([bookmarksRes, categoriesRes]) => {
-        if (!bookmarksRes.ok)
-          return bookmarksRes.json().then(e => Promise.reject(e))
+      .then(([linksRes, categoriesRes]) => {
+        if (!linksRes.ok)
+          return linksRes.json().then(e => Promise.reject(e))
         if (!categoriesRes.ok)
           return categoriesRes.json().then(e => Promise.reject(e))
 
         return Promise.all([
-          bookmarksRes.json(),
+          linksRes.json(),
           categoriesRes.json(),
         ])
       })
-      .then(([bookmarks, categories]) => {
-        this.setState({ bookmarks, categories })
+      .then(([links, categories]) => {
+        this.setState({ links, categories })
       })
       .catch(error => {
         console.error({ error })
@@ -51,18 +51,18 @@ class App extends Component {
     })
   }
 
-  handleAddBookmark = bookmark => {
+  handleAddLink = link => {
     this.setState({
-      bookmarks: [
-        ...this.state.bookmarks,
-        bookmark
+      links: [
+        ...this.state.links,
+        link
       ]
     })
   }
 
-  handleDeletebookmark = bookmarkId => {
+  handleDeletelink = linkId => {
     this.setState({
-      bookmarks: this.state.bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
+      links: this.state.links.filter(link => link.id !== linkId)
     })
   }
 
@@ -74,20 +74,20 @@ class App extends Component {
             exact
             key={path}
             path={path}
-            component={BookmarkListNav}
+            component={LinkListNav}
           />
         )}
         <Route
-          path='/bookmark/:bookmarkId'
-          component={BookmarkPageNav}
+          path='/link/:linkId'
+          component={LinkPageNav}
         />
         <Route
           path='/add-category'
-          component={BookmarkPageNav}
+          component={LinkPageNav}
         />
         <Route
-          path='/add-bookmark'
-          component={BookmarkPageNav}
+          path='/add-link'
+          component={LinkPageNav}
         />
       </>
     )
@@ -101,20 +101,20 @@ class App extends Component {
             exact
             key={path}
             path={path}
-            component={BookmarkListMain}
+            component={LinkListMain}
           />
         )}
         <Route
-          path='/bookmark/:bookmarkId'
-          component={BookmarkPageMain}
+          path='/link/:linkId'
+          component={LinkPageMain}
         />
         <Route
           path='/add-category'
           component={AddCategory}
         />
         <Route
-          path='/add-bookmark'
-          component={AddBookmark}
+          path='/add-link'
+          component={AddLink}
         />
       </>
     )
@@ -122,11 +122,11 @@ class App extends Component {
 
   render() {
     const value = {
-      Bookmarks: this.state.bookmarks,
+      Links: this.state.links,
       categories: this.state.categories,
       addCategory: this.handleAddCategory,
-      addBookmark: this.handleAddBookmark,
-      deleteBookmark: this.handleDeleteBookmark,
+      addLink: this.handleAddLink,
+      deleteLink: this.handleDeleteLink,
     }
     return (
       <ApiContext.Provider value={value}>
@@ -136,7 +136,7 @@ class App extends Component {
           </nav>
           <header className='App__header'>
             <h1>
-              <Link to='/'>ClipIt</Link>
+              <Link to='/'>Clip It</Link>
               {' '}
               <FontAwesomeIcon icon='check-double' />
             </h1>

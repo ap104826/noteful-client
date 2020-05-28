@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BookmarkListMain component renders a .BookmarkListMain by default 1`] = `
+exports[`LinkListMain component renders a .LinkListMain by default 1`] = `
 <section
-  className="BookmarkListMain"
+  className="LinkListMain"
 >
   <ul />
   <div
-    className="BookmarkListMain__button-container"
+    className="LinkListMain__button-container"
   >
     <NavCircleButton
-      className="BookmarkListMain__add-bookmark-button"
+      className="LinkListMain__add-link-button"
       tag={[Function]}
-      to="/add-bookmark"
+      to="/add-link"
       type="button"
     >
       <FontAwesomeIcon
@@ -33,18 +33,18 @@ exports[`BookmarkListMain component renders a .BookmarkListMain by default 1`] =
         transform={null}
       />
       <br />
-      Bookmark
+      Link
     </NavCircleButton>
   </div>
 </section>
 `;
 
-exports[`BookmarkListMain component renders a Bookmark in ul for each bookmarks in array 1`] = `
+exports[`LinkListMain component renders a Link in ul for each links in array 1`] = `
 <ul>
   <li
     key="cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1"
   >
-    <Bookmark
+    <Link
       id="cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1"
       modified="2019-01-03T00:00:00.000Z"
       name="Dogs"
@@ -53,7 +53,7 @@ exports[`BookmarkListMain component renders a Bookmark in ul for each bookmarks 
   <li
     key="d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1"
   >
-    <Bookmark
+    <Link
       id="d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1"
       modified="2018-08-15T23:00:00.000Z"
       name="Cats"

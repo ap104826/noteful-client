@@ -2,10 +2,10 @@
 
 exports[`AddLink component renders the complete form 1`] = `
 <section
-  className="AddBookmark"
+  className="AddLink"
 >
   <h2>
-    Create a bookmark
+    Create a link
   </h2>
   <ClipitForm>
     <div
@@ -17,7 +17,7 @@ exports[`AddLink component renders the complete form 1`] = `
         Name
       </label>
       <input
-        id="bookmark-name-input"
+        id="link-name-input"
         type="text"
       />
     </div>
@@ -25,24 +25,24 @@ exports[`AddLink component renders the complete form 1`] = `
       className="field"
     >
       <label
-        htmlFor="bookmark-content-input"
+        htmlFor="link-content-input"
       >
         Content
       </label>
       <textarea
-        id="bookmark-content-input"
+        id="link-content-input"
       />
     </div>
     <div
       className="field"
     >
       <label
-        htmlFor="bookmark-category-select"
+        htmlFor="link-category-select"
       >
         Category
       </label>
       <select
-        id="bookmark-category-select"
+        id="link-category-select"
       >
         <option
           value={null}
@@ -57,16 +57,16 @@ exports[`AddLink component renders the complete form 1`] = `
       <button
         type="submit"
       >
-        Add bookmark
+        Add link
       </button>
     </div>
   </ClipitForm>
 </section>
 `;
 
-exports[`AddBookmark component renders the select options from categories 1`] = `
+exports[`AddLink component renders the select options from categories 1`] = `
 <select
-  id="bookmark-category-select"
+  id="link-category-select"
 >
   <option
     value={null}
