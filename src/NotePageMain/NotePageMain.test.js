@@ -1,35 +1,35 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import LinkPageMain from './LinkPageMain'
+import NotePageMain from './NotePageMain'
 
-describe(`LinkPageMain component`, () => {
-  it('renders a .LinkPageMain by default', () => {
-    const wrapper = shallow(<LinkPageMain />)
+describe(`NotePageMain component`, () => {
+  it('renders a .NotePageMain by default', () => {
+    const wrapper = shallow(<NotePageMain />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
   // enzyme doesn't yet support React.createContext
-  it.skip('renders a Link with link prop', () => {
+  it.skip('renders a Note with note prop', () => {
     const props = {
       match: {
         params: {
-          linkId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
+          noteId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
         }
       }
     }
     const context = {
-      links: [{
+      notes: [{
         id: `cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1`,
         name: `Dogs`,
         modified: `2019-01-03T00:00:00.000Z`,
-        // category_id: b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1,
+        // folder_id: b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1,
         content: "Corporis accusamus placeat.\n \rUnde."
       }]
     }
-    const link = shallow(<LinkPageMain {...props} />, context)
-      .find('Link')
-    expect(toJson(link)).toMatchSnapshot()
+    const note = shallow(<NotePageMain {...props} />, context)
+      .find('Note')
+    expect(toJson(note)).toMatchSnapshot()
   })
 
   // enzyme doesn't yet support React.createContext
@@ -37,14 +37,14 @@ describe(`LinkPageMain component`, () => {
     const props = {
       match: {
         params: {
-          linkId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
+          noteId: 'cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1'
         }
       }
     }
 
-    const linksContextWithDifferentContent = [
+    const notesContextWithDifferentContent = [
       {
-        links: [
+        notes: [
           {
             id: `cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1`,
             content: "Content with n r.\n \rafter n r.",
@@ -52,7 +52,7 @@ describe(`LinkPageMain component`, () => {
         ]
       },
       {
-        links: [
+        notes: [
           {
             id: `cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1`,
             content: "Content with n.\nafter."
@@ -61,9 +61,9 @@ describe(`LinkPageMain component`, () => {
       }
     ]
 
-    linksContextWithDifferentContent.forEach(context => {
-      const content = shallow(<LinkPageMain {...props} />, context)
-        .find('LinkPageMain__content')
+    notesContextWithDifferentContent.forEach(context => {
+      const content = shallow(<NotePageMain {...props} />, context)
+        .find('NotePageMain__content')
       expect(toJson(content)).toMatchSnapshot()
     })
   })
