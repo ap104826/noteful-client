@@ -4,19 +4,19 @@ import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import './Link.css'
+import './Note.css'
 
-export default class Link extends React.Component {
+export default class Note extends React.Component {
   static defaultProps ={
-    onDeleteLink: () => {},
+    onDeleteNote: () => {},
   }
   static contextType = ApiContext;
 
   handleClickDelete = e => {
     e.preventDefault()
-    const linkId = this.props.id
+    const noteId = this.props.id
 
-    fetch(`${config.API_ENDPOINT}/links/${linkId}`, {
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -28,9 +28,9 @@ export default class Link extends React.Component {
         return res.json()
       })
       .then(() => {
-        this.context.deleteLink(linkId)
+        this.context.deleteNote(noteId)
         // allow parent to perform extra behaviour
-        this.props.onDeleteLink(linkId)
+        this.props.onDeleteNote(noteId)
       })
       .catch(error => {
         console.error({ error })
@@ -40,14 +40,14 @@ export default class Link extends React.Component {
   render() {
     const { name, id, modified } = this.props
     return (
-      <div className='Link'>
-        <h2 className='Link__title'>
-          <Link to={`/link/${id}`}>
+      <div className='Note'>
+        <h2 className='Note__title'>
+          <Link to={`/note/${id}`}>
             {name}
           </Link>
         </h2>
         <button
-          className='Link__delete'
+          className='Note__delete'
           type='button'
           onClick={this.handleClickDelete}
         >
@@ -55,8 +55,8 @@ export default class Link extends React.Component {
           {' '}
           remove
         </button>
-        <div className='Link__dates'>
-          <div className='Link__dates-modified'>
+        <div className='Note__dates'>
+          <div className='Note__dates-modified'>
             Modified
             {' '}
             <span className='Date'>

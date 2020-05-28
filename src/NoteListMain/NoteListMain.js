@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from '../Link/Link'
+import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
-import { getLinksForCategory } from '../links-helpers'
-import './LinkListMain.css'
+import { getNotesForFolder } from '../notes-helpers'
+import './NoteListMain.css'
 
-export default class LinkListMain extends React.Component {
+export default class NoteListMain extends React.Component {
   static defaultProps = {
     match: {
       params: {}
@@ -16,32 +16,32 @@ export default class LinkListMain extends React.Component {
   static contextType = ApiContext
 
   render() {
-    const { category_id } = this.props.match.params
-    const { links = [] } = this.context
-    const linksForCategories = getLinksForCategories(links, category_id)
+    const { folder_id } = this.props.match.params
+    const { notes = [] } = this.context
+    const notesForFolder = getNotesForFolder(notes, folder_id)
     return (
-      <section className='LinkListMain'>
+      <section className='NoteListMain'>
         <ul>
-          {linksForCategories.map(link =>
-            <li key={link.id}>
-              <Link
-                id={link.id}
-                name={link.name}
-                modified={link.modified}
+          {notesForFolder.map(note =>
+            <li key={note.id}>
+              <Note
+                id={note.id}
+                name={note.name}
+                modified={note.modified}
               />
             </li>
           )}
         </ul>
-        <div className='LinkListMain__button-container'>
+        <div className='NoteListMain__button-container'>
           <CircleButton
             tag={Link}
-            to='/add-link'
+            to='/add-note'
             type='button'
-            className='LinkListMain__add-link-button'
+            className='NoteListMain__add-note-button'
           >
             <FontAwesomeIcon icon='plus' />
             <br />
-            Link
+            Note
           </CircleButton>
         </div>
       </section>
