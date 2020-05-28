@@ -17,10 +17,10 @@ export default class BookmarkPageNav extends React.Component {
   static contextType = ApiContext;
 
   render() {
-    const { bookmarks, categories } = this.context
+    const { bookmarks, categories, } = this.context
     const { bookmarkId } = this.props.match.params
     const bookmark = findBookmark(bookmarks, bookmarkId) || {}
-    const category = findCategory(categories, bookmark.category_id)
+    const category = findCategory(categories, link.category_id)
     return (
       <div className='BookmarkPageNav'>
         <CircleButton

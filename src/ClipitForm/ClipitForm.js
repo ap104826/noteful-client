@@ -1,11 +1,11 @@
 import React from 'react'
-import './ClipitForm.css'
+import './CliptitForm.css'
 
 export default function ClipitForm(props) {
   const { className, ...otherProps } = props
   return (
     <form
-      className={['Clipitform', className].join(' ')}
+      className={['Clipit-form', className].join(' ')}
       action='#'
       {...otherProps}
     />

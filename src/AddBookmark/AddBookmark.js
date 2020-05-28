@@ -25,7 +25,7 @@ export default class AddBookmark extends Component {
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(newBookmark),
+      body: JSON.stringify(newCategory),
     })
       .then(res => {
         if (!res.ok)
