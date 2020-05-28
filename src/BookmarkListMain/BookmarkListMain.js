@@ -26,7 +26,7 @@ export default class BookmarkListMain extends React.Component {
             <li key={bookmark.id}>
               <Bookmark
                 id={bookmark.id}
-                name={bookmark.name}
+                title={bookmark.title}
                 modified={bookmark.modified}
               />
             </li>

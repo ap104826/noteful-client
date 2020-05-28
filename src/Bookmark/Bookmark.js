@@ -38,12 +38,12 @@ export default class Bookmark extends React.Component {
   }
 
   render() {
-    const { name, id, modified } = this.props
+    const { title, id, modified } = this.props
     return (
       <div className='Bookmark'>
         <h2 className='Bookmark__title'>
           <Link to={`/bookmark/${id}`}>
-            {name}
+            {title}
           </Link>
         </h2>
         <button
