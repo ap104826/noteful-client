@@ -9,6 +9,8 @@ import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import NotesError from '../NotesError/NotesError'
+import FoldersError from '../FoldersError/FoldersError'
 import './App.css'
 
 
@@ -80,6 +82,15 @@ class App extends Component {
         <Route
           path='/note/:noteId'
           component={NotePageNav}
+          render={(history) =>
+            <FolderDisplayError>
+              <SidebarNoteDetails
+                folders={this.state.allFolders}
+                folderId={this.state.selectedFolder}
+                history={history}
+              />
+            </FolderDisplayError>
+          }
         />
         <Route
           path='/add-folder'
@@ -107,6 +118,14 @@ class App extends Component {
         <Route
           path='/note/:noteId'
           component={NotePageMain}
+          render={(routerProps) =>
+            <NotesError>
+              <NoteDetails
+                notes={this.state.allNotes}
+                noteId={routerProps.match.params.noteId}
+              />
+            </NotesError>
+          }
         />
         <Route
           path='/add-folder'
