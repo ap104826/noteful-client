@@ -9,8 +9,7 @@ import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
 import ApiContext from '../ApiContext'
 import config from '../config'
-import NotesError from '../NotesError/NotesError'
-import FoldersError from '../FoldersError/FoldersError'
+import ErrorBoundary from '../AddNote/ErrorBoundary'
 import './App.css'
 
 
@@ -44,7 +43,7 @@ class App extends Component {
       })
   }
 
-  handleAddFolder = folder => {
+  handleAddFolder = (folder) => {
     this.setState({
       folders: [
         ...this.state.folders,
@@ -54,6 +53,7 @@ class App extends Component {
   }
 
   handleAddNote = note => {
+    note.modified = new Date()
     this.setState({
       notes: [
         ...this.state.notes,
@@ -62,12 +62,28 @@ class App extends Component {
     })
   }
 
-  handleDeleteNote = noteId => {
-    this.setState({
-      notes: this.state.notes.filter(note => note.id !== noteId)
-    })
-  }
+  handleDeleteNote = (confirmed) => {
+    const noteId = this.state.noteToDelete
 
+    if (confirmed) {
+
+      fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        },
+      })
+        .then(() => {
+
+          this.setState({
+            notes: this.state.notes.filter(note => note.id !== noteId)
+          })
+        })
+        .catch(error => {
+          console.error({ error })
+        })
+    }
+  }
   renderNavRoutes() {
     return (
       <>
@@ -82,15 +98,6 @@ class App extends Component {
         <Route
           path='/note/:noteId'
           component={NotePageNav}
-          render={(history) =>
-            <FolderDisplayError>
-              <SidebarNoteDetails
-                folders={this.state.allFolders}
-                folderId={this.state.selectedFolder}
-                history={history}
-              />
-            </FolderDisplayError>
-          }
         />
         <Route
           path='/add-folder'
@@ -103,6 +110,7 @@ class App extends Component {
       </>
     )
   }
+
 
   renderMainRoutes() {
     return (
@@ -118,22 +126,17 @@ class App extends Component {
         <Route
           path='/note/:noteId'
           component={NotePageMain}
-          render={(routerProps) =>
-            <NotesError>
-              <NoteDetails
-                notes={this.state.allNotes}
-                noteId={routerProps.match.params.noteId}
-              />
-            </NotesError>
-          }
+
         />
         <Route
           path='/add-folder'
-          component={AddFolder}
+          render={() => <AddFolder />}
+
         />
         <Route
           path='/add-note'
-          component={AddNote}
+          render={() => <AddNote />}
+
         />
       </>
     )
@@ -143,9 +146,12 @@ class App extends Component {
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
+      hasError: this.state.hasError,
+      friendlyErrorMessage: this.state.friendlyErrorMessage,
       addFolder: this.handleAddFolder,
       addNote: this.handleAddNote,
       deleteNote: this.handleDeleteNote,
+      onError: this.handleOnError
     }
     return (
       <ApiContext.Provider value={value}>
@@ -161,12 +167,14 @@ class App extends Component {
             </h1>
           </header>
           <main className='App__main'>
-            {this.renderMainRoutes()}
+            <ErrorBoundary hasError={this.state.hasError} friendlyErrorMessage={this.state.friendlyErrorMessage}>
+              {this.renderMainRoutes()}
+            </ErrorBoundary>
           </main>
         </div>
+
       </ApiContext.Provider>
     )
   }
 }
-
 export default App

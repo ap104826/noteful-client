@@ -3,6 +3,7 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './AddNote.css'
+import PropTypes from 'prop-types';
 
 export default class AddNote extends Component {
   static defaultProps = {
@@ -12,7 +13,7 @@ export default class AddNote extends Component {
   }
   static contextType = ApiContext;
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault()
     const newNote = {
       name: e.target['note-name'].value,
@@ -36,9 +37,7 @@ export default class AddNote extends Component {
         this.context.addNote(note)
         this.props.history.push(`/folder/${note.folder_id}`)
       })
-      .catch(error => {
-        console.error({ error })
-      })
+
   }
 
   render() {
@@ -82,3 +81,8 @@ export default class AddNote extends Component {
     )
   }
 }
+AddNote.propTypes = {
+  name: PropTypes.string,
+  id: PropTypes.number
+};
+

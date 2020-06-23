@@ -1,25 +1,20 @@
 import React from 'react';
 
+
 class FoldersError extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = {
-            hasError: false
-        };
+        super(props)
+        this.state = { errorOccurred: false }
     }
 
-    static getDerivedStateFromError(error) {
-        return { hasError: true };
+    componentDidCatch(error, info) {
+        this.setState({ errorOccurred: true })
     }
 
     render() {
-        if (this.state.hasError) {
-            return (
-                <h2>Could not add Folder</h2>
-            );
-        }
-        return this.props.children;
+        return this.state.errorOccurred ? <h1>Could not add a Folder!</h1> : this.props.children
     }
 }
+
 
 export default FoldersError;

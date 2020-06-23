@@ -3,6 +3,7 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './AddFolder.css'
+import PropTypes from 'prop-types'
 
 export default class AddFolder extends Component {
   static defaultProps = {
@@ -34,8 +35,9 @@ export default class AddFolder extends Component {
         this.props.history.push(`/folder/${folder.id}`)
       })
       .catch(error => {
-        console.error({ error })
+        this.context.onError(error, 'Could not add folder')
       })
+
   }
 
   render() {
@@ -58,4 +60,9 @@ export default class AddFolder extends Component {
       </section>
     )
   }
+
 }
+AddFolder.propTypes = {
+  name: PropTypes.string,
+  id: PropTypes.number.isRequired
+};
