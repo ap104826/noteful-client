@@ -6,27 +6,25 @@ import './AddNote.css'
 import PropTypes from 'prop-types';
 
 export default class AddNote extends Component {
-  static defaultProps = {
-    history: {
-      push: () => { }
-    },
-  }
   static contextType = ApiContext;
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const newNote = {
+    const note = {
       name: e.target['note-name'].value,
       content: e.target['note-content'].value,
       folder_id: e.target['note-folder-id'].value,
       modified: new Date(),
     }
+    this.props.history.push(`/folder/${note.folder_id}`)
+
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
+      body: JSON.stringify(note),
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(newNote),
+
     })
       .then(res => {
         if (!res.ok)
@@ -35,7 +33,9 @@ export default class AddNote extends Component {
       })
       .then(note => {
         this.context.addNote(note)
-        this.props.history.push(`/folder/${note.folder_id}`)
+      })
+      .catch(error => {
+        console.log('add note ', { error })
       })
 
   }
@@ -50,19 +50,20 @@ export default class AddNote extends Component {
             <label htmlFor='note-name-input'>
               Name
             </label>
-            <input type='text' id='note-name-input' name='note-name' />
+            <input type='text' id='note-name-input' required name='note-name' />
+
           </div>
           <div className='field'>
             <label htmlFor='note-content-input'>
               Content
             </label>
-            <textarea id='note-content-input' name='note-content' />
+            <textarea id='note-content-input' required name='note-content' />
           </div>
           <div className='field'>
             <label htmlFor='note-folder-select'>
               Folder
             </label>
-            <select id='note-folder-select' name='note-folder-id'>
+            <select name='note-folder-id' required id='note-folder-select' >
               <option value={null}>...</option>
               {folders.map(folder =>
                 <option key={folder.id} value={folder.id}>

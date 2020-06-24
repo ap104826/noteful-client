@@ -52,7 +52,7 @@ class App extends Component {
     })
   }
 
-  handleAddNote = note => {
+  handleAddNote = (note) => {
     note.modified = new Date()
     this.setState({
       notes: [
@@ -62,28 +62,13 @@ class App extends Component {
     })
   }
 
-  handleDeleteNote = (confirmed) => {
-    const noteId = this.state.noteToDelete
+  handleDeleteNote = (noteId) => {
 
-    if (confirmed) {
-
-      fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
-        method: 'DELETE',
-        headers: {
-          'content-type': 'application/json'
-        },
-      })
-        .then(() => {
-
-          this.setState({
-            notes: this.state.notes.filter(note => note.id !== noteId)
-          })
-        })
-        .catch(error => {
-          console.error({ error })
-        })
-    }
+    this.setState({
+      notes: this.state.notes.filter(note => note.id !== noteId)
+    })
   }
+
   renderNavRoutes() {
     return (
       <>
@@ -130,12 +115,12 @@ class App extends Component {
         />
         <Route
           path='/add-folder'
-          render={() => <AddFolder />}
+          render={(props) => <AddFolder {...props} />}
 
         />
         <Route
           path='/add-note'
-          render={() => <AddNote />}
+          render={(props) => <AddNote {...props} />}
 
         />
       </>

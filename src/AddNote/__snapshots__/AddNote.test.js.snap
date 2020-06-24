@@ -24,7 +24,7 @@ exports[`AddNote component renders the complete form 1`] = `
     <div
       className="field"
     >
-      <label
+      <label required
         htmlFor="note-content-input"
       >
         Content
