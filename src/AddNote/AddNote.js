@@ -3,7 +3,6 @@ import NotefulForm from '../NotefulForm/NotefulForm'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './AddNote.css'
-import PropTypes from 'prop-types';
 
 export default class AddNote extends Component {
   static contextType = ApiContext;
@@ -82,8 +81,4 @@ export default class AddNote extends Component {
     )
   }
 }
-AddNote.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
-};
 
