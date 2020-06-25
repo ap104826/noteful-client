@@ -83,7 +83,7 @@ export default class AddNote extends Component {
   }
 }
 AddNote.propTypes = {
-  name: PropTypes.string,
-  id: PropTypes.number
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
 };
 
