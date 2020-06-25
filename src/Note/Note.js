@@ -65,5 +65,5 @@ export default class Note extends React.Component {
   }
 }
 Note.propType = {
-  nodeId: this.propType.array,
+  noteId: this.propType.array,
 }
