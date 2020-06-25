@@ -33,29 +33,31 @@ export default class Note extends React.Component {
   }
 
   render() {
-    const { name, id, modified } = this.props
+    const { note_name, content, modified } = this.props
     return (
       <div className='Note'>
         <h2 className='Note__title'>
-          <Link to={`/note/${id}`}>
-            {name}
-          </Link>
+          {note_name}
         </h2>
         <button
           className='Note__delete'
           type='button'
+          aria-label='delete button'
           onClick={this.handleClickDelete}
         >
           <FontAwesomeIcon icon='trash-alt' />
           {' '}
           remove
         </button>
+        <div className='Note__content'>
+          {content}
+        </div>
         <div className='Note__dates'>
           <div className='Note__dates-modified'>
             Modified
             {' '}
             <span className='Date'>
-              {format(modified, 'Do MMM YYYY')}
+              {format(modified, 'DD MMM YYYY')}
             </span>
           </div>
         </div>
